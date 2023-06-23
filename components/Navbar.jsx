@@ -2,17 +2,24 @@ import React from "react";
 import { BiHome } from "react-icons/bi";
 import { BsPerson } from "react-icons/bs";
 import Image from "next/image";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
     <div className="w-[30%] px-2 py-5 border-r-2 flex flex-col justify-between">
       <div className="flex flex-col gap-2">
-        <div className="flex items-center gap-2 cursor-pointer hover:bg-slate-100 p-1 rounded text-gray-600">
+        <Link
+          href="/"
+          className="flex items-center gap-2 cursor-pointer hover:bg-slate-100 p-1 rounded text-gray-600"
+        >
           <BiHome /> Home
-        </div>
-        <div className="flex items-center gap-2 cursor-pointer hover:bg-slate-100 p-1 rounded text-gray-600">
+        </Link>
+        <Link
+          href="/profile"
+          className="flex items-center gap-2 cursor-pointer hover:bg-slate-100 p-1 rounded text-gray-600"
+        >
           <BsPerson /> Profile
-        </div>
+        </Link>
       </div>
       <div className="profile flex items-center gap-2">
         <div>
