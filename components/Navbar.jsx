@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const Navbar = () => {
   return (
-    <div className="w-[30%] p-2 border-r-2 flex flex-col justify-between">
+    <div className="w-[30%] px-2 py-5 border-r-2 flex flex-col justify-between">
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-2 cursor-pointer hover:bg-slate-100 p-1 rounded text-gray-600">
           <BiHome /> Home
