@@ -5,14 +5,14 @@ import { BsSearch } from "react-icons/bs";
 
 const Header = () => {
   return (
-    <div className=" bg-white py-2 px-4 shadow-md flex justify-between">
+    <div className=" bg-white py-2 px-4 border-b-2 flex justify-between">
       <div>
         <h1 className="font-bold text-2xl flex">
-          <span className="flex gap-1">
+          <span className="flex gap-1 text-[rgb(31,41,55)]">
             <HiChatBubbleLeftRight />
             Social
           </span>
-          <span>Buzz</span>
+          <span className="text-[rgb(28,101,243)]">Buzz</span>
         </h1>
       </div>
       <div>
