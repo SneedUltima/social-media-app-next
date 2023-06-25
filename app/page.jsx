@@ -16,8 +16,8 @@ export default function Home() {
   }, []);
 
   return (
-    <div className=" bg-[#f0f0f5] w-full h-screen flex flex-col items-center justify-start gap-5 py-5">
-      <CreateBuzz />
+    <div className=" bg-[#f0f0f5] w-full h-full flex flex-col items-center justify-start gap-5 py-5">
+      <CreateBuzz setBuzzes={setBuzzes} />
       <Buzzes buzzes={buzzes} setBuzzes={setBuzzes} />
     </div>
   );

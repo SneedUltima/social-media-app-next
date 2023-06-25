@@ -8,18 +8,16 @@ const Buzz = ({ buzz, setBuzzes }) => {
   return (
     <div className="bg-white rounded px-2 py-3 mx-5 w-[1400px]">
       <div className="top flex gap-2">
-        <div className="left">
+        <div className="left min-w-[60px]">
           <img
-            src={buzzUser.picture}
-            width={60}
-            height={60}
-            alt={buzzUser.name}
-            className=" rounded-full"
+            src={buzzUser?.picture}
+            alt={buzzUser?.name}
+            className=" rounded-full w-[60px] h-[60px]"
           />
         </div>
         <div className="right flex flex-col gap-2">
           <div className="top pt-1">
-            <p className="text-sm font-semibold">{buzzUser.nickname}</p>
+            <p className="text-sm font-semibold">{buzzUser?.nickname}</p>
             <p className="text-sm text-gray-400">
               {new Date(postedAt).toLocaleString()}
             </p>
