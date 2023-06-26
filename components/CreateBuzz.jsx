@@ -1,5 +1,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const fakeUser = {
   id: "6276d0c34ss2ce123f428b13ec",
@@ -44,7 +46,16 @@ const CreateBuzz = ({ setBuzzes }) => {
       ...buzzes,
     ]);
 
-    console.log("Success");
+    toast.success("Your buzz has been sent!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
 
   return (
