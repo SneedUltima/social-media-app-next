@@ -43,3 +43,25 @@ export async function POST(req, res) {
     return NextResponse.json({ error });
   }
 }
+
+export async function PUT(req, res) {
+  try {
+    const updateData = await fetch(`${baseUrl}/updateOne`, {
+      ...fetchOptions,
+      body: JSON.stringify({
+        ...fetchBody,
+        filter: { _id: { $old: req.body._id } },
+        update: {
+          $set: {
+            body: req.body.body,
+          },
+        },
+      }),
+    });
+    const updateDataJson = await updateData.json();
+    return NextResponse.json(updateDataJson);
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json({ error });
+  }
+}
