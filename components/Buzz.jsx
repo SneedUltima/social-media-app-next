@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import { ImBin } from "react-icons/im";
 import { GrClose } from "react-icons/gr";
 import { BsPencilSquare } from "react-icons/bs";
 import { toast } from "react-toastify";
@@ -52,29 +51,6 @@ const Buzz = ({ buzz, setBuzzes }) => {
     });
   };
 
-  const deleteBuzz = async () => {
-    console.log(_id);
-    const response = await fetch(`/api/buzz/${_id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    const responseJson = await response.json();
-
-    toast.error("Your buzz has been deleted!", {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-  };
-
   return (
     <>
       {modalOpen && (
@@ -100,14 +76,15 @@ const Buzz = ({ buzz, setBuzzes }) => {
                     cols="50"
                     rows="2"
                     placeholder="Edit buzz.."
-                    defaultValue={buzz.body}
                     onChange={(e) => setEditText(e.target.value)}
                     className="resize-none p-3 bg-gray-200"
-                  ></textarea>
+                  >
+                    {buzz.body}
+                  </textarea>
                   <button
                     onClick={updateBuzz}
                     disabled={pressDisabled}
-                    className="bg-[rgb(28,101,243)] text-white px-3 py-1 rounded font-semibold hover:bg-[rgb(40,98,213)] active:bg-gray-600 focus:bg-gray-600 mt-4"
+                    className="bg-[rgb(28,101,243)] text-white px-3 py-1 rounded font-semibold hover:bg-[rgb(40,98,213)] mt-4"
                   >
                     Update
                   </button>
@@ -140,15 +117,11 @@ const Buzz = ({ buzz, setBuzzes }) => {
         </div>
         <div className="bottom flex justify-between items-center py-3 px-2 border-t-2">
           <p className="text-gray-400 text-sm">1 person liked this</p>
-          <div className="flex items-center gap-2">
+          <div className="flex gap-2">
             <AiOutlineHeart className=" cursor-pointer text-xl text-red-600" />
             <BsPencilSquare
               onClick={() => setModalOpen(!modalOpen)}
               className=" cursor-pointer text-xl text-green-600"
-            />
-            <ImBin
-              onClick={deleteBuzz}
-              className=" cursor-pointer text-red-600"
             />
           </div>
         </div>
