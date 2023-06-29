@@ -12,7 +12,7 @@ export const connectToDB = async () => {
 
   try {
     await mongoose.connect(process.env.MONGODB_DATA_API_URI, {
-      dbName: "social_buzzes",
+      dbName: "social_buzz",
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });

@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { BiHome } from "react-icons/bi";
 import { BsPerson } from "react-icons/bs";
+import { RxExit } from "react-icons/rx";
 import Image from "next/image";
 import Link from "next/link";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
@@ -50,6 +51,12 @@ const Navbar = () => {
             className="flex items-center gap-2 cursor-pointer hover:bg-slate-100 p-1 rounded text-gray-600"
           >
             <BsPerson /> Profile
+          </Link>
+          <Link
+            href="/"
+            className="flex items-center gap-2 cursor-pointer hover:bg-slate-100 p-1 rounded text-gray-600"
+          >
+            <RxExit /> Sign Out
           </Link>
         </div>
       ) : (
