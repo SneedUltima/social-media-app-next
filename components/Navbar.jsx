@@ -52,12 +52,12 @@ const Navbar = () => {
           >
             <BsPerson /> Profile
           </Link>
-          <Link
-            href="/"
+          <div
+            onClick={signOut}
             className="flex items-center gap-2 cursor-pointer hover:bg-slate-100 p-1 rounded text-gray-600"
           >
             <RxExit /> Sign Out
-          </Link>
+          </div>
         </div>
       ) : (
         <div className="flex items-center justify-center">

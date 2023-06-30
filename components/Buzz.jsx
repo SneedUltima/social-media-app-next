@@ -53,10 +53,6 @@ const Buzz = ({ buzz, setBuzzes }) => {
     });
   };
 
-  console.log(buzzUser);
-  console.log(buzz);
-  console.log(session);
-
   return (
     <>
       {modalOpen && (
@@ -100,7 +96,7 @@ const Buzz = ({ buzz, setBuzzes }) => {
           </div>
         </div>
       )}
-      <div className="bg-white rounded px-2 py-3 mx-5 w-[700px] lg:w-[1400px]">
+      <div className="bg-white rounded px-6 py-3 mx-5 w-[700px] lg:w-[1400px]">
         <div className="top flex gap-2">
           <div className="left min-w-[60px]">
             <img
@@ -124,7 +120,9 @@ const Buzz = ({ buzz, setBuzzes }) => {
         <div className="bottom flex justify-between items-center py-3 px-2 border-t-2">
           <p className="text-gray-400 text-sm">1 person liked this</p>
           <div className="flex gap-2">
-            <AiOutlineHeart className=" cursor-pointer text-xl text-red-600" />
+            {session && (
+              <AiOutlineHeart className=" cursor-pointer text-xl text-red-600" />
+            )}
             {session?.user.id === buzzUser.id && (
               <BsPencilSquare
                 onClick={() => setModalOpen(!modalOpen)}
