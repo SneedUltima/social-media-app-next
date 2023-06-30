@@ -25,7 +25,7 @@ const Navbar = () => {
     <div className="w-[30%] h-screen px-2 py-5 border-r-2 flex flex-col justify-between">
       {session?.user ? (
         <div className="flex flex-col gap-2">
-          <div className="profile flex items-center gap-2 border-b-2 pb-2">
+          <div className="profile flex flex-col lg:flex-row items-center gap-2 border-b-2 pb-2">
             <div>
               <Image
                 src={session?.user.image}

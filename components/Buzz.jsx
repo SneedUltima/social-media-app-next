@@ -4,8 +4,10 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { GrClose } from "react-icons/gr";
 import { BsPencilSquare } from "react-icons/bs";
 import { toast } from "react-toastify";
+import { useSession } from "next-auth/react";
 
 const Buzz = ({ buzz, setBuzzes }) => {
+  const { data: session } = useSession();
   const [modalOpen, setModalOpen] = useState(false);
   const [editText, setEditText] = useState("");
   const [pressDisabled, setPressDisabled] = useState(false);
@@ -51,6 +53,10 @@ const Buzz = ({ buzz, setBuzzes }) => {
     });
   };
 
+  console.log(buzzUser);
+  console.log(buzz);
+  console.log(session);
+
   return (
     <>
       {modalOpen && (
@@ -94,18 +100,18 @@ const Buzz = ({ buzz, setBuzzes }) => {
           </div>
         </div>
       )}
-      <div className="bg-white rounded px-2 py-3 mx-5 w-[1400px]">
+      <div className="bg-white rounded px-2 py-3 mx-5 w-[700px] lg:w-[1400px]">
         <div className="top flex gap-2">
           <div className="left min-w-[60px]">
             <img
-              src={buzzUser?.picture}
+              src={buzzUser?.image}
               alt={buzzUser?.name}
               className=" rounded-full w-[60px] h-[60px]"
             />
           </div>
           <div className="right flex flex-col gap-2">
             <div className="top pt-1">
-              <p className="text-sm font-semibold">{buzzUser?.nickname}</p>
+              <p className="text-sm font-semibold">{buzzUser?.name}</p>
               <p className="text-sm text-gray-400">
                 {new Date(postedAt).toLocaleString()}
               </p>
@@ -119,10 +125,12 @@ const Buzz = ({ buzz, setBuzzes }) => {
           <p className="text-gray-400 text-sm">1 person liked this</p>
           <div className="flex gap-2">
             <AiOutlineHeart className=" cursor-pointer text-xl text-red-600" />
-            <BsPencilSquare
-              onClick={() => setModalOpen(!modalOpen)}
-              className=" cursor-pointer text-xl text-green-600"
-            />
+            {session?.user.id === buzzUser.id && (
+              <BsPencilSquare
+                onClick={() => setModalOpen(!modalOpen)}
+                className=" cursor-pointer text-xl text-green-600"
+              />
+            )}
           </div>
         </div>
       </div>

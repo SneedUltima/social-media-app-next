@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { useSession } from "next-auth/react";
 import "react-toastify/dist/ReactToastify.css";
 
 const fakeUser = {
@@ -11,23 +12,22 @@ const fakeUser = {
 };
 
 const CreateBuzz = ({ setBuzzes }) => {
+  const { data: session } = useSession();
   const [buzzText, setBuzzText] = useState("");
 
   const onSubmitBuzz = async () => {
-    console.log("start");
-    console.log(buzzText);
-    const user = fakeUser;
     const buzz = {
       postedAt: Date.now(),
       body: buzzText,
       likes: [],
       user: {
-        id: user.id,
-        name: user.name,
-        nickname: user.nickname,
-        picture: user.picture,
+        id: session.user.id,
+        name: session.user.name,
+        email: session.user.email,
+        image: session.user.image,
       },
     };
+
     const response = await fetch("/api/buzz", {
       method: "POST",
       headers: {
@@ -37,6 +37,8 @@ const CreateBuzz = ({ setBuzzes }) => {
     });
 
     const responseJson = await response.json();
+
+    console.log(responseJson);
 
     setBuzzes((buzzes) => [
       {
@@ -61,7 +63,7 @@ const CreateBuzz = ({ setBuzzes }) => {
   return (
     <div className="flex items-center gap-2">
       <Image
-        src="/images/avatar2.png"
+        src={session?.user.image}
         width={60}
         height={60}
         alt="profile image"
@@ -74,7 +76,7 @@ const CreateBuzz = ({ setBuzzes }) => {
           rows="2"
           placeholder="Send a buzz.."
           onChange={(e) => setBuzzText(e.target.value)}
-          className="resize-none p-3 bg-gray-200"
+          className="resize-none p-3 bg-gray-200 w-[400px] lg:w-full"
         ></textarea>
       </form>
       <button
