@@ -11,13 +11,11 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log("START");
     (async () => {
       const getBuzzes = await fetch("/api/buzz");
       const getBuzzesJson = await getBuzzes.json();
 
       setBuzzes(getBuzzesJson);
-      console.log("SUCCESS");
       setLoading(false);
     })();
   }, []);

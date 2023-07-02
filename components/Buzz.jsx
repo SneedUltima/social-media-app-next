@@ -11,7 +11,8 @@ const Buzz = ({ buzz, setBuzzes }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editText, setEditText] = useState("");
   const [pressDisabled, setPressDisabled] = useState(false);
-  const { _id, postedAt, body, user: buzzUser } = buzz;
+  const { _id, postedAt, likes, body, user: buzzUser } = buzz;
+  const [likesState, setLikesState] = useState(likes);
 
   const updateBuzz = async () => {
     setPressDisabled(true);
@@ -53,6 +54,25 @@ const Buzz = ({ buzz, setBuzzes }) => {
     });
   };
 
+  const likeBuzz = async () => {
+    let action = likesState.includes(session.user.id) ? "$pull" : "$addToSet";
+
+    await fetch("/api/buzz/like", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ _id, userId: session.user.id, action }),
+    });
+
+    setLikesState((likes) => {
+      if (likesState.includes(session.user.id)) {
+        return likes.filter((like) => like !== session.user.id);
+      }
+      return [...likes, session.user.id];
+    });
+  };
+
   return (
     <>
       {modalOpen && (
@@ -80,9 +100,8 @@ const Buzz = ({ buzz, setBuzzes }) => {
                     placeholder="Edit buzz.."
                     onChange={(e) => setEditText(e.target.value)}
                     className="resize-none p-3 bg-gray-200"
-                  >
-                    {buzz.body}
-                  </textarea>
+                    defaultValue={buzz.body}
+                  ></textarea>
                   <button
                     onClick={updateBuzz}
                     disabled={pressDisabled}
@@ -96,7 +115,7 @@ const Buzz = ({ buzz, setBuzzes }) => {
           </div>
         </div>
       )}
-      <div className="bg-white rounded px-6 py-3 mx-5 w-[700px] lg:w-[1400px]">
+      <div className="bg-white rounded px-6 py-4 mx-5 w-[700px] lg:w-[1400px]">
         <div className="top flex gap-2">
           <div className="left min-w-[60px]">
             <img
@@ -118,10 +137,25 @@ const Buzz = ({ buzz, setBuzzes }) => {
           </div>
         </div>
         <div className="bottom flex justify-between items-center py-3 px-2 border-t-2">
-          <p className="text-gray-400 text-sm">1 person liked this</p>
+          <p className="text-gray-400 text-sm">
+            {likesState ? likesState.length : 0}{" "}
+            {` ${likesState.length === 1 ? "person" : "people"} liked this`}
+          </p>
           <div className="flex gap-2">
             {session && (
-              <AiOutlineHeart className=" cursor-pointer text-xl text-red-600" />
+              <>
+                {likesState.includes(session.user.id) ? (
+                  <AiFillHeart
+                    onClick={() => likeBuzz()}
+                    className=" cursor-pointer text-xl text-red-600"
+                  />
+                ) : (
+                  <AiOutlineHeart
+                    onClick={() => likeBuzz()}
+                    className=" cursor-pointer text-xl text-red-600"
+                  />
+                )}
+              </>
             )}
             {session?.user.id === buzzUser.id && (
               <BsPencilSquare

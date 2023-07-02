@@ -45,7 +45,6 @@ export async function POST(req, res) {
 }
 
 export async function PUT(req, res) {
-  console.log(req.body.body);
   try {
     const updateData = await fetch(`${baseUrl}/updateOne`, {
       ...fetchOptions,
@@ -60,28 +59,10 @@ export async function PUT(req, res) {
       }),
     });
     const updateDataJson = await updateData.json();
+    console.log(updateDataJson);
     return NextResponse.json(updateDataJson);
   } catch (error) {
     console.log(error);
     return NextResponse.json({ error });
   }
 }
-
-// export async function DELETE(request, res) {
-//   const { id } = request.params;
-//   console.log(id);
-//   try {
-//     const deleteData = await fetch(`${baseUrl}/deleteOne`, {
-//       ...fetchOptions,
-//       body: JSON.stringify({
-//         ...fetchBody,
-//         filter: { _id: { $old: id } },
-//       }),
-//     });
-//     const deleteDataJson = await deleteData.json();
-//     return NextResponse.json(deleteDataJson);
-//   } catch (error) {
-//     console.log(error);
-//     return NextResponse.json({ error });
-//   }
-// }
