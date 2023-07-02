@@ -4,13 +4,6 @@ import { toast } from "react-toastify";
 import { useSession } from "next-auth/react";
 import "react-toastify/dist/ReactToastify.css";
 
-const fakeUser = {
-  id: "6276d0c34ss2ce123f428b13ec",
-  name: "Arnold Stallone",
-  nickname: "terminator",
-  picture: "https://i.pravatar.cc/150?img=50",
-};
-
 const CreateBuzz = ({ setBuzzes }) => {
   const { data: session } = useSession();
   const [buzzText, setBuzzText] = useState("");
