@@ -45,15 +45,17 @@ export async function POST(req, res) {
 }
 
 export async function PUT(req, res) {
+  const { _id, body } = await req.json();
+  const id = _id;
   try {
     const updateData = await fetch(`${baseUrl}/updateOne`, {
       ...fetchOptions,
       body: JSON.stringify({
         ...fetchBody,
-        filter: { _id: { $old: req.body._id } },
+        filter: { _id: { $oid: id } },
         update: {
           $set: {
-            body: req.body.body,
+            body: body,
           },
         },
       }),
