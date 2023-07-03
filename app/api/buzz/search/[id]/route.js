@@ -15,18 +15,34 @@ const fetchBody = {
 };
 const baseUrl = `${process.env.MONGODB_DATA_API_URL}/action`;
 
-export async function DELETE(req, { params }) {
-  const { id } = params;
+export async function GET(req, { params }) {
+  const term = params.id;
+  console.log(term);
   try {
-    const deleteData = await fetch(`${baseUrl}/deleteOne`, {
+    const readData = await fetch(`${baseUrl}/aggregate`, {
       ...fetchOptions,
       body: JSON.stringify({
         ...fetchBody,
-        filter: { _id: { $oid: id } },
+        pipeline: [
+          {
+            $search: {
+              index: "default",
+              text: {
+                query: term,
+                path: {
+                  wildcard: "*",
+                },
+                fuzzy: {},
+              },
+            },
+          },
+          { $sort: { postedAt: -1 } },
+        ],
       }),
     });
-    const deleteDataJson = await deleteData.json();
-    return NextResponse.json(deleteDataJson);
+
+    const readDataJson = await readData.json();
+    return NextResponse.json(readDataJson.documents);
   } catch (error) {
     console.log(error);
     return NextResponse.json({ error });

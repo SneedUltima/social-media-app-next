@@ -2,7 +2,6 @@
 import { Circles } from "react-loader-spinner";
 
 export default function Loading() {
-  // You can add any UI inside Loading, including a Skeleton.
   return (
     <Circles
       height="80"
