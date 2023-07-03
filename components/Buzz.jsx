@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { ImBin } from "react-icons/im";
 import { GrClose } from "react-icons/gr";
 import { BsPencilSquare } from "react-icons/bs";
 import { toast } from "react-toastify";
@@ -70,6 +71,30 @@ const Buzz = ({ buzz, setBuzzes }) => {
         return likes.filter((like) => like !== session.user.id);
       }
       return [...likes, session.user.id];
+    });
+  };
+
+  const deleteBuzz = async (id) => {
+    const response = await fetch(`/api/buzz/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const responseJson = await response.json();
+
+    setBuzzes((buzzes) => buzzes.filter((buzz) => buzz._id !== _id));
+
+    toast.success("Your buzz has been deleted!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
     });
   };
 
@@ -158,10 +183,16 @@ const Buzz = ({ buzz, setBuzzes }) => {
               </>
             )}
             {session?.user.id === buzzUser.id && (
-              <BsPencilSquare
-                onClick={() => setModalOpen(!modalOpen)}
-                className=" cursor-pointer text-xl text-green-600"
-              />
+              <div className="flex items-center gap-2">
+                <BsPencilSquare
+                  onClick={() => setModalOpen(!modalOpen)}
+                  className=" cursor-pointer text-xl text-green-600"
+                />
+                <ImBin
+                  onClick={() => deleteBuzz(buzz._id)}
+                  className=" cursor-pointer text-red-600"
+                />
+              </div>
             )}
           </div>
         </div>

@@ -67,22 +67,3 @@ export async function PUT(req, res) {
     return NextResponse.json({ error });
   }
 }
-
-// export async function DELETE(request, res) {
-//   const { id } = request.params;
-//   console.log(id);
-//   try {
-//     const deleteData = await fetch(`${baseUrl}/deleteOne`, {
-//       ...fetchOptions,
-//       body: JSON.stringify({
-//         ...fetchBody,
-//         filter: { _id: { $old: id } },
-//       }),
-//     });
-//     const deleteDataJson = await deleteData.json();
-//     return NextResponse.json(deleteDataJson);
-//   } catch (error) {
-//     console.log(error);
-//     return NextResponse.json({ error });
-//   }
-// }
