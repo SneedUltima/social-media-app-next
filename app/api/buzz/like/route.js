@@ -16,13 +16,16 @@ const fetchBody = {
 const baseUrl = `${process.env.MONGODB_DATA_API_URL}/action`;
 
 export async function PUT(req, res) {
+  const { _id, userId, action } = await req.json();
+  const id = _id;
+
   try {
     const updateData = await fetch(`${baseUrl}/updateOne`, {
       ...fetchOptions,
       body: JSON.stringify({
         ...fetchBody,
-        filter: { _id: { "$old": req.body._id } },
-        update: { [req.body.action]: { likes: req.body.userId } },
+        filter: { _id: { $oid: id } },
+        update: { [action]: { likes: id } },
       }),
     });
     const updateDataJson = await updateData.json();

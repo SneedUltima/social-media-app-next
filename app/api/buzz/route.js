@@ -61,7 +61,6 @@ export async function PUT(req, res) {
       }),
     });
     const updateDataJson = await updateData.json();
-    console.log(updateDataJson);
     return NextResponse.json(updateDataJson);
   } catch (error) {
     console.log(error);
