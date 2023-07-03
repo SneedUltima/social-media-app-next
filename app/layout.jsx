@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <Provider>
-          <main className="flex">
+          <main>
             <ToastContainer
               position="top-center"
               autoClose={5000}
@@ -30,7 +30,6 @@ export default function RootLayout({ children }) {
               pauseOnHover
               theme="light"
             />
-            <Navbar />
             {children}
           </main>
         </Provider>
