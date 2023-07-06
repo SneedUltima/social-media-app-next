@@ -23,7 +23,7 @@ const Header = ({ setBuzzes }) => {
   };
 
   return (
-    <div className=" bg-white py-2 px-4 border-b-2 flex justify-between">
+    <div className=" bg-[#0C102B] py-2 px-4 flex justify-between">
       <div>
         <h1 className="font-bold text-2xl flex">
           <span className="flex gap-1 text-[rgb(31,41,55)]">
@@ -38,7 +38,7 @@ const Header = ({ setBuzzes }) => {
         <input
           onChange={(e) => handleSearch(e)}
           value={searchTerm}
-          className=" border-2 border-gray-200 p-1 pl-10 relative"
+          className=" border-2 rounded-lg border-white p-1 pl-10 relative bg-gradient-to-b from-[#0f55E8] opacity-[10%]"
           type="text"
           placeholder="Search Buzzes..."
         />

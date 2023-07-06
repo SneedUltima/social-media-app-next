@@ -23,15 +23,15 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex flex-col">
-      <Header setBuzzes={setBuzzes} />
-      <div className="flex">
-        <Navbar />
+    <div className="flex">
+      <Navbar />
+      <div className="flex flex-col w-full">
+        <Header setBuzzes={setBuzzes} />
         <div
           className={
             loading
-              ? " bg-[#f0f0f5] w-full h-screen flex flex-col items-center justify-start gap-5 py-5"
-              : " bg-[#f0f0f5] w-full h-full flex flex-col items-center justify-start gap-5 py-5"
+              ? " bg-[#0C102B]  h-screen flex flex-col items-center justify-start gap-5 py-5"
+              : " bg-[#0C102B]  h-full flex flex-col items-center justify-start gap-5 py-5"
           }
         >
           {session?.user && <CreateBuzz setBuzzes={setBuzzes} />}

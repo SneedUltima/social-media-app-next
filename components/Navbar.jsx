@@ -22,10 +22,10 @@ const Navbar = () => {
   });
 
   return (
-    <div className="w-[30%] h-screen px-2 py-5 border-r-2 flex flex-col justify-between">
+    <div className="bg-[#242D4D] w-[20%] px-2 py-5 flex flex-col justify-between">
       {session?.user ? (
-        <div className="flex flex-col gap-2">
-          <div className="profile flex flex-col lg:flex-row items-center gap-2 border-b-2 pb-2">
+        <div className="flex flex-col">
+          <div className="profile flex flex-col lg:flex-row items-center gap-2 pb-2">
             <div>
               <Image
                 src={session?.user.image}
@@ -36,25 +36,27 @@ const Navbar = () => {
               />
             </div>
             <div className="pt-1">
-              <p className="font-bold text-xs">{session?.user.name}</p>
-              <p className=" text-xs text-gray-400">{session?.user.email}</p>
+              <p className="font-bold text-xs text-white">
+                {session?.user.name}
+              </p>
+              <p className=" text-xs text-[#EBEBF5]">{session?.user.email}</p>
             </div>
           </div>
           <Link
             href="/"
-            className="flex items-center gap-2 cursor-pointer hover:bg-slate-100 p-1 rounded text-gray-600"
+            className="flex items-center gap-2 cursor-pointer hover:bg-gradient-to-b from-[#8016A7] from-[-100%] p-1 py-4 rounded text-[#fff] border-t-2 border-[#454B79]  hover:border-[#8016A7]"
           >
             <BiHome /> Home
           </Link>
           <Link
             href="/profile"
-            className="flex items-center gap-2 cursor-pointer hover:bg-slate-100 p-1 rounded text-gray-600"
+            className="flex items-center gap-2 cursor-pointer hover:bg-gradient-to-b from-[#8016A7] from-[-100%] p-1 py-4 rounded text-[#fff] border-t-2 border-[#454B79] hover:border-[#8016A7]"
           >
             <BsPerson /> Profile
           </Link>
           <div
             onClick={signOut}
-            className="flex items-center gap-2 cursor-pointer hover:bg-slate-100 p-1 rounded text-gray-600"
+            className="flex items-center gap-2 cursor-pointer hover:bg-gradient-to-b from-[#8016A7] from-[-100%] p-1 py-4 rounded text-[#fff] border-t-2 border-[#454B79]  hover:border-[#8016A7]"
           >
             <RxExit /> Sign Out
           </div>
