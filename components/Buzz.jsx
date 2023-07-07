@@ -51,7 +51,7 @@ const Buzz = ({ buzz, setBuzzes }) => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "light",
+      theme: "dark",
     });
   };
 
@@ -94,7 +94,7 @@ const Buzz = ({ buzz, setBuzzes }) => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "light",
+      theme: "dark",
     });
   };
 
@@ -108,14 +108,14 @@ const Buzz = ({ buzz, setBuzzes }) => {
           >
             <div
               onClick={(e) => e.stopPropagation()}
-              className="rounded flex flex-col w-fit h-fit overflow-hidden p-5 bg-zinc-100  mb-20"
+              className="rounded flex flex-col w-fit h-fit overflow-hidden p-5 bg-[#222222] border-2 border-[#2C2F35]  mb-20"
             >
               <div>
                 <div className="flex justify-between">
-                  <p>Edit your buzz</p>
+                  <p className="text-white font-semibold">Edit your buzz</p>
                   <GrClose
                     onClick={() => setModalOpen(!modalOpen)}
-                    className=" cursor-pointer"
+                    className=" cursor-pointer text-white"
                   />
                 </div>
                 <div className="flex flex-col items-center pt-4">
@@ -124,13 +124,13 @@ const Buzz = ({ buzz, setBuzzes }) => {
                     rows="2"
                     placeholder="Edit buzz.."
                     onChange={(e) => setEditText(e.target.value)}
-                    className="resize-none p-3 bg-gray-200"
+                    className="resize-none p-3 bg-[#181818] text-white"
                     defaultValue={buzz.body}
                   ></textarea>
                   <button
                     onClick={updateBuzz}
                     disabled={pressDisabled}
-                    className="bg-[rgb(28,101,243)] text-white px-3 py-1 rounded font-semibold hover:bg-[rgb(40,98,213)] mt-4"
+                    className="bg-[#FF4742] border-2 border-[#FF4742] text-[#181818]  px-3 py-1 rounded font-semibold hover:bg-[#181818] hover:text-[#FF4742] ease-in-out mt-3"
                   >
                     Update
                   </button>
@@ -140,7 +140,7 @@ const Buzz = ({ buzz, setBuzzes }) => {
           </div>
         </div>
       )}
-      <div className="bg-[#182042] rounded px-6 py-4 mx-5 w-[700px] lg:w-[1600px]">
+      <div className="bg-[#222222] border-2 border-[#2C2F35] shadow-md rounded px-6 py-4 mx-5 w-[700px] lg:w-[1600px]">
         <div className="top flex gap-2">
           <div className="left min-w-[60px]">
             <img
@@ -151,17 +151,19 @@ const Buzz = ({ buzz, setBuzzes }) => {
           </div>
           <div className="right flex flex-col gap-2">
             <div className="top pt-1">
-              <p className="text-sm font-semibold">{buzzUser?.name}</p>
+              <p className="text-sm font-semibold text-white">
+                {buzzUser?.name}
+              </p>
               <p className="text-sm text-gray-400">
                 {new Date(postedAt).toLocaleString()}
               </p>
             </div>
-            <div className="bottom py-6">
+            <div className="bottom py-6 text-white">
               <p>{body}</p>
             </div>
           </div>
         </div>
-        <div className="bottom flex justify-between items-center py-3 px-2 border-t-2">
+        <div className="bottom flex justify-between items-center py-3 px-2 border-t-2 border-[#2C2F35] ">
           <p className="text-gray-400 text-sm">
             {likesState ? likesState.length : 0}{" "}
             {` ${likesState.length === 1 ? "person" : "people"} liked this`}
@@ -177,7 +179,7 @@ const Buzz = ({ buzz, setBuzzes }) => {
                 ) : (
                   <AiOutlineHeart
                     onClick={() => likeBuzz()}
-                    className=" cursor-pointer text-xl text-red-600"
+                    className=" cursor-pointer text-xl text-[#FF4742]"
                   />
                 )}
               </>
@@ -186,11 +188,11 @@ const Buzz = ({ buzz, setBuzzes }) => {
               <div className="flex items-center gap-2">
                 <BsPencilSquare
                   onClick={() => setModalOpen(!modalOpen)}
-                  className=" cursor-pointer text-xl text-green-600"
+                  className=" cursor-pointer text-xl text-green-500"
                 />
                 <ImBin
                   onClick={() => deleteBuzz(buzz._id)}
-                  className=" cursor-pointer text-red-600"
+                  className=" cursor-pointer text-[#FF4742]"
                 />
               </div>
             )}

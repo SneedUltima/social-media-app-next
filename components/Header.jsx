@@ -23,25 +23,27 @@ const Header = ({ setBuzzes }) => {
   };
 
   return (
-    <div className=" bg-[#0C102B] py-2 px-4 flex justify-between">
-      <div>
-        <h1 className="font-bold text-2xl flex">
-          <span className="flex gap-1 text-[rgb(31,41,55)]">
-            <HiChatBubbleLeftRight />
-            Social
-          </span>
-          <span className="text-[rgb(28,101,243)]">Buzz</span>
-        </h1>
-      </div>
-      <div>
-        <BsSearch className=" text-gray-400 absolute top-4 right-64 z-10" />
-        <input
-          onChange={(e) => handleSearch(e)}
-          value={searchTerm}
-          className=" border-2 rounded-lg border-white p-1 pl-10 relative bg-gradient-to-b from-[#0f55E8] opacity-[10%]"
-          type="text"
-          placeholder="Search Buzzes..."
-        />
+    <div className="flex flex-col bg-[#181818]">
+      <div className=" py-4 px-4 flex justify-between">
+        <div>
+          <h1 className="font-bold text-2xl flex">
+            <span className="flex gap-1 text-white">
+              <HiChatBubbleLeftRight className="text-[#FF4742]" />
+              Social
+            </span>
+            <span className=" text-[#FF4742]">Buzz</span>
+          </h1>
+        </div>
+        <div>
+          <BsSearch className=" text-gray-400 absolute top-6 right-64 z-10" />
+          <input
+            onChange={(e) => handleSearch(e)}
+            value={searchTerm}
+            className=" rounded-lg p-1 pl-10 border-2 border-[#2C2F35] relative bg-[#1F1E1E] text-white"
+            type="text"
+            placeholder="Search Buzzes..."
+          />
+        </div>
       </div>
     </div>
   );

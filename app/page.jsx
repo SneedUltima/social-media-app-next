@@ -30,8 +30,8 @@ export default function Home() {
         <div
           className={
             loading
-              ? " bg-[#0C102B]  h-screen flex flex-col items-center justify-start gap-5 py-5"
-              : " bg-[#0C102B]  h-full flex flex-col items-center justify-start gap-5 py-5"
+              ? " bg-[#181818] h-screen flex flex-col items-center justify-start gap-5 py-5"
+              : " bg-[#181818] h-full flex flex-col items-center justify-start gap-5 py-5"
           }
         >
           {session?.user && <CreateBuzz setBuzzes={setBuzzes} />}

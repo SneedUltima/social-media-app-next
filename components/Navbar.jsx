@@ -22,10 +22,10 @@ const Navbar = () => {
   });
 
   return (
-    <div className="bg-[#242D4D] w-[20%] px-2 py-5 flex flex-col justify-between">
+    <div className="bg-[#1F1E1E] w-[20%] px-5 py-5 flex flex-col justify-between">
       {session?.user ? (
         <div className="flex flex-col">
-          <div className="profile flex flex-col lg:flex-row items-center gap-2 pb-2">
+          <div className="profile flex flex-col items-center gap-2 pb-6">
             <div>
               <Image
                 src={session?.user.image}
@@ -44,19 +44,19 @@ const Navbar = () => {
           </div>
           <Link
             href="/"
-            className="flex items-center gap-2 cursor-pointer hover:bg-gradient-to-b from-[#8016A7] from-[-100%] p-1 py-4 rounded text-[#fff] border-t-2 border-[#454B79]  hover:border-[#8016A7]"
+            className="flex items-center gap-2 cursor-pointer hover:bg-gradient-to-b from-[#FF4742] from-[-100%] p-1 py-4 rounded text-[#BFBFBF] border-t-2 border-[#2C2F35]  hover:border-[#FF4742]"
           >
             <BiHome /> Home
           </Link>
           <Link
             href="/profile"
-            className="flex items-center gap-2 cursor-pointer hover:bg-gradient-to-b from-[#8016A7] from-[-100%] p-1 py-4 rounded text-[#fff] border-t-2 border-[#454B79] hover:border-[#8016A7]"
+            className="flex items-center gap-2 cursor-pointer hover:bg-gradient-to-b from-[#FF4742] from-[-100%] p-1 py-4 rounded text-[#BFBFBF] border-t-2 border-[#2C2F35] hover:border-[#FF4742]"
           >
             <BsPerson /> Profile
           </Link>
           <div
             onClick={signOut}
-            className="flex items-center gap-2 cursor-pointer hover:bg-gradient-to-b from-[#8016A7] from-[-100%] p-1 py-4 rounded text-[#fff] border-t-2 border-[#454B79]  hover:border-[#8016A7]"
+            className="flex items-center gap-2 cursor-pointer hover:bg-gradient-to-b from-[#FF4742] from-[-100%] p-1 py-4 rounded text-[#BFBFBF] border-t-2 border-[#2C2F35]  hover:border-[#FF4742]"
           >
             <RxExit /> Sign Out
           </div>
@@ -69,7 +69,7 @@ const Navbar = () => {
                 type="button"
                 key={provider.name}
                 onClick={() => signIn(provider.id)}
-                className="bg-[rgb(28,101,243)] w-fit text-white px-3 py-1 rounded font-semibold hover:bg-[rgb(40,98,213)]"
+                className="bg-[#FF4742] border-2 border-[#FF4742] w-fit text-[#181818] px-3 py-1 rounded font-semibold hover:bg-[#181818] hover:text-[#FF4742]"
               >
                 Sign In
               </button>
