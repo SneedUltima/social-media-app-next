@@ -1,7 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import { HiChatBubbleLeftRight } from "react-icons/hi2";
-import { BsSearch } from "react-icons/bs";
+import { BsFaBars, FaBars } from "react-icons/fa";
+import Logo from "../public/images/SocialBuzzLogo.svg";
+import Image from "next/image";
 
 const Header = ({ setBuzzes }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -24,22 +26,30 @@ const Header = ({ setBuzzes }) => {
 
   return (
     <div className="flex flex-col bg-[#181818]">
-      <div className=" py-4 px-4 flex justify-between">
-        <div>
-          <h1 className="font-bold text-2xl flex">
+      <div className=" py-4 px-8 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
+        <div className="flex items-center gap-6">
+          <h1 className="font-bold text-2xl flex items-center justify-center">
             <span className="flex gap-1 text-white">
-              <HiChatBubbleLeftRight className="text-[#FF4742]" />
+              <Image
+                src={Logo}
+                width={30}
+                height={30}
+                alt="profile image"
+                className=" rounded-full mr-1"
+              />
               Social
             </span>
             <span className=" text-[#FF4742]">Buzz</span>
           </h1>
+          <div>
+            <FaBars className="text-gray-400 flex sm:hidden text-lg cursor-pointer" />
+          </div>
         </div>
         <div>
-          <BsSearch className=" text-gray-400 absolute top-6 right-64 z-10" />
           <input
             onChange={(e) => handleSearch(e)}
             value={searchTerm}
-            className=" rounded-lg p-1 pl-10 border-2 border-[#2C2F35] relative bg-[#1F1E1E] text-white"
+            className=" rounded-lg p-1 pl-5 border-2 border-[#2C2F35] relative bg-[#1F1E1E] text-white"
             type="text"
             placeholder="Search Buzzes..."
           />

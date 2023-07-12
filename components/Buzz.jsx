@@ -140,7 +140,7 @@ const Buzz = ({ buzz, setBuzzes }) => {
           </div>
         </div>
       )}
-      <div className="bg-[#222222] border-2 border-[#2C2F35] shadow-md rounded px-6 py-4 mx-5 w-[700px] lg:w-[1600px]">
+      <div className="bg-[#222222] border-2 border-[#2C2F35] shadow-md rounded px-6 py-4 mx-5 w-[350px] sm:w-[400px] md:w-[700px] lg:w-[1000px] xl:w-[1200px] 2xl:w-[1600px]">
         <div className="top flex gap-2">
           <div className="left min-w-[60px]">
             <img

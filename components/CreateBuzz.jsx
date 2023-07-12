@@ -54,14 +54,16 @@ const CreateBuzz = ({ setBuzzes }) => {
   };
 
   return (
-    <div className="flex items-center gap-2">
-      <Image
-        src={session?.user.image}
-        width={60}
-        height={60}
-        alt="profile image"
-        className=" rounded-full"
-      />
+    <div className="flex flex-col mb-4 md:mb-0 md:flex-row items-center gap-2">
+      <div className="hidden md:flex">
+        <Image
+          src={session?.user.image}
+          width={60}
+          height={60}
+          alt="profile image"
+          className=" rounded-full"
+        />
+      </div>
       <form>
         <textarea
           required
@@ -74,7 +76,7 @@ const CreateBuzz = ({ setBuzzes }) => {
       </form>
       <button
         onClick={onSubmitBuzz}
-        className="bg-[#FF4742] border-2 border-[#FF4742] text-[#181818]  px-3 py-1 rounded font-semibold hover:bg-[#181818] hover:text-[#FF4742] ease-in-out"
+        className="bg-[#FF4742] border-2 border-[#FF4742] text-[#181818]  px-3 py-1 rounded font-semibold hover:bg-[#181818] hover:text-[#FF4742] transition-all "
       >
         Buzz
       </button>
