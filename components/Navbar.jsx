@@ -1,13 +1,15 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { BiHome } from "react-icons/bi";
 import { BsPerson } from "react-icons/bs";
 import { RxExit } from "react-icons/rx";
 import Image from "next/image";
 import Link from "next/link";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+import NavContext from "../context/NavContext";
 
 const Navbar = () => {
+  const { nav, setNav } = useContext(NavContext);
   const { data: session } = useSession();
   const [providers, setProviders] = useState(null);
 
@@ -22,7 +24,13 @@ const Navbar = () => {
   });
 
   return (
-    <div className="bg-[#1F1E1E] w-[25%] md:w-[20%] px-5 py-5 flex flex-col justify-between">
+    <div
+      className={
+        !nav
+          ? "bg-[#1F1E1E] w-[25%] md:w-[20%] px-5 py-5 hidden sm:flex flex-col justify-between"
+          : "bg-[#1F1E1E] w-[25%] md:w-[20%] px-5 py-5 flex flex-col justify-between"
+      }
+    >
       {session?.user ? (
         <div className="flex flex-col">
           <div className="profile flex flex-col items-center gap-2 pb-6">

@@ -1,11 +1,13 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { HiChatBubbleLeftRight } from "react-icons/hi2";
 import { BsFaBars, FaBars } from "react-icons/fa";
 import Logo from "../public/images/SocialBuzzLogo.svg";
 import Image from "next/image";
+import NavContext from "../context/NavContext";
 
 const Header = ({ setBuzzes }) => {
+  const { nav, setNav } = useContext(NavContext);
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = async (e) => {
@@ -22,6 +24,11 @@ const Header = ({ setBuzzes }) => {
       const getBuzzesJson = await getBuzzes.json();
       setBuzzes(getBuzzesJson);
     }
+  };
+
+  const handleNav = () => {
+    setNav(!nav);
+    console.log(nav);
   };
 
   return (
@@ -42,7 +49,10 @@ const Header = ({ setBuzzes }) => {
             <span className=" text-[#FF4742]">Buzz</span>
           </h1>
           <div>
-            <FaBars className="text-gray-400 flex sm:hidden text-lg cursor-pointer" />
+            <FaBars
+              onClick={handleNav}
+              className="text-gray-400 flex sm:hidden text-lg cursor-pointer"
+            />
           </div>
         </div>
         <div>
