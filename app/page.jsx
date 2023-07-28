@@ -4,12 +4,10 @@ import Loading from "./loading";
 import CreateBuzz from "@components/CreateBuzz";
 import Header from "@components/Header";
 import { useEffect, useState, useContext } from "react";
-import { getProviders, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Navbar from "@components/Navbar";
-import NavContext from "../context/NavContext";
 
 export default function Home() {
-  const { nav, setNav } = useContext(NavContext);
   const { data: session } = useSession();
   const [buzzes, setBuzzes] = useState([]);
   const [loading, setLoading] = useState(true);

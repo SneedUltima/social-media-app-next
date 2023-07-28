@@ -1,6 +1,5 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
-import Navbar from "@components/Navbar";
 import Provider from "@components/Provider";
 import { ToastContainer, toast } from "react-toastify";
 import { NavProvider } from "../context/NavContext";

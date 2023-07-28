@@ -1,10 +1,10 @@
 "use client";
 import React, { useContext, useState } from "react";
-import { HiChatBubbleLeftRight } from "react-icons/hi2";
-import { BsFaBars, FaBars } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 import Logo from "../public/images/SocialBuzzLogo.svg";
 import Image from "next/image";
 import NavContext from "../context/NavContext";
+import { FaTimes } from "react-icons/fa";
 
 const Header = ({ setBuzzes }) => {
   const { nav, setNav } = useContext(NavContext);
@@ -49,10 +49,17 @@ const Header = ({ setBuzzes }) => {
             <span className=" text-[#FF4742]">Buzz</span>
           </h1>
           <div>
-            <FaBars
-              onClick={handleNav}
-              className="text-gray-400 flex sm:hidden text-lg cursor-pointer"
-            />
+            {nav ? (
+              <FaTimes
+                onClick={handleNav}
+                className="text-gray-400 flex sm:hidden text-lg cursor-pointer"
+              />
+            ) : (
+              <FaBars
+                onClick={handleNav}
+                className="text-gray-400 flex sm:hidden text-lg cursor-pointer"
+              />
+            )}
           </div>
         </div>
         <div>

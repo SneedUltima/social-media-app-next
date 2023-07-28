@@ -71,7 +71,7 @@ const CreateBuzz = ({ setBuzzes }) => {
           rows="2"
           placeholder="Send a buzz.."
           onChange={(e) => setBuzzText(e.target.value)}
-          className="resize-none p-3 bg-[#222222] w-[400px] lg:w-full shadow-md text-white"
+          className="resize-none p-3 bg-[#222222] w-[350px] h-[200px] sm:h-[100px] sm:w-[400px] lg:w-full shadow-md text-white"
         ></textarea>
       </form>
       <button
