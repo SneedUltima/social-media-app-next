@@ -22,6 +22,8 @@ export default function Home() {
     })();
   }, []);
 
+  console.log(buzzes);
+
   return (
     <div className="flex bg-[#181818]">
       <Navbar />
@@ -29,14 +31,20 @@ export default function Home() {
         <Header setBuzzes={setBuzzes} />
         <div
           className={
-            loading
+            buzzes.length <= 1
               ? " bg-[#181818] h-screen flex flex-col items-center justify-start gap-5 py-5"
               : " bg-[#181818] h-full flex flex-col items-center justify-start gap-5 py-5"
           }
         >
           {session?.user && <CreateBuzz setBuzzes={setBuzzes} />}
           {loading && <Loading />}
-          <Buzzes buzzes={buzzes} setBuzzes={setBuzzes} />
+          {buzzes.length === 0 ? (
+            <div className="h-screen">
+              <p className="text-white">No Buzzes Found</p>
+            </div>
+          ) : (
+            <Buzzes buzzes={buzzes} setBuzzes={setBuzzes} />
+          )}
         </div>
       </div>
     </div>
