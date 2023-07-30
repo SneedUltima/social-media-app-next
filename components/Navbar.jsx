@@ -59,7 +59,7 @@ const Navbar = () => {
             <BiHome /> Home
           </Link>
           <Link
-            href="/profile"
+            href={`/profile/${session?.user.id}`}
             className="flex items-center gap-2 cursor-pointer hover:bg-gradient-to-b from-[#FF4742] from-[-100%] p-1 py-4 rounded text-[#BFBFBF] border-t-2 border-[#2C2F35] hover:border-[#FF4742] transition-colors text-[12px] text-base"
           >
             <BsPerson /> Profile
